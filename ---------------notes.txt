@@ -23,4 +23,13 @@ standard Laravel CRUD :
 4- create standard Controller and its Model :
     - > php artisan make:controller ProductController --resource --model=Product
 
+5- add route role :
+    Route::resource("products", ProductController::class);
+
+    *** when the address is : mySite/products - depend on operation go to method in ProductController 
+
+6- build views
+
+    *** insert bootstrap css, js from https://getbootstrap.com/docs/5.0/getting-started/introduction/
+
     
