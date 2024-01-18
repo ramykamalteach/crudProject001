@@ -7,6 +7,23 @@
     <title>Our Crud System</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        #paginationNumbers ul{
+            justify-content: flex-end;
+        }
+        header h1, footer h3{
+            text-align: center;
+            color: blue;
+        }
+        footer{
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+        }
+    </style>
+
 </head>
 <body>
     
