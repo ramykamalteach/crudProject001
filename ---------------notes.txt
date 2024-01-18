@@ -1,0 +1,26 @@
+standard Laravel CRUD :
+    - views(pages) :
+        - show ALL items (pagination), create button, show, update, delete one item
+        - form for create item
+        - form for edit item
+        - show one item details
+
+    - controller :
+        index, create, store, edit, update, show, destroy
+
+--------------------------------------------------------------------------------
+
+1- create laravel project
+
+2- create database manually , add to .env
+
+3- create migration file for "Products", system migrate
+
+    ****
+    - > php artisan make:migration create_product_table --create=products
+        *** --create=products : create table
+
+4- create standard Controller and its Model :
+    - > php artisan make:controller ProductController --resource --model=Product
+
+    
