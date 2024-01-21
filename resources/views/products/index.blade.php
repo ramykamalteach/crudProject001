@@ -19,7 +19,7 @@
     @endif
 
     <table class="table table-bordered">
-    <tr>
+        <tr>
             <th>No</th>
             <th>Name</th>
             <th>Price</th>
@@ -48,7 +48,7 @@
     </table>
 
     <div id="paginationNumbers">
-        {!! $products->links('pagination::bootstrap-4') !!}
+        {!! $products->links('pagination::bootstrap-5') !!}
     </div>
 
     {{-- {!! $products->links() !!} --}}

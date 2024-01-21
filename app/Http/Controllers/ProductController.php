@@ -38,7 +38,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validation
+        $request->validate([
+            'productName' => 'required',
+            'productPrice' => 'required',
+            'productProducer' => 'required',
+            'productDescription' => 'required',
+        ]);
+
+        // add to database
+        Product::create($request->all());
+
+        return redirect()->route("products.index")->with("success", "Product has been Added !!!");
     }
 
     /**
@@ -62,6 +73,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
+        return view("products.edit", compact("product"));
     }
 
     /**
@@ -74,6 +86,18 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
+        // validation
+        $request->validate([
+            'productName' => 'required',
+            'productPrice' => 'required',
+            'productProducer' => 'required',
+            'productDescription' => 'required',
+        ]);
+
+        // add to database
+        $product->update($request->all());
+
+        return redirect()->route("products.index")->with("success", "Product has been updated !!!");
     }
 
     /**
