@@ -22,6 +22,10 @@
             right: 50%;
             transform: translateX(50%);
         }
+        .error {
+            font-size: 8x;
+            background-color: pink;
+        }
     </style>
 
 </head>

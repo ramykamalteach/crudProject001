@@ -31,26 +31,38 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Product Name:</strong>
-                <input type="text" name="productName" class="form-control" placeholder="ProductName">
+                <input type="text" name="productName" class="form-control" placeholder="ProductName" value="{{old('productName')}}">
             </div>
+            @if($errors->has('productName'))
+                <div class="error">{{ $errors->first('productName') }}</div>
+            @endif
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Product Price:</strong>
-                <input type="number" class="form-control" name="productPrice" placeholder="Product Price">
+                <input type="number" class="form-control" name="productPrice" placeholder="Product Price" value="{{old('productPrice')}}">
             </div>
+            @if($errors->has('productPrice'))
+                <div class="error">{{ $errors->first('productPrice') }}</div>
+            @endif
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>product Producer:</strong>
-                <input type="text" class="form-control" name="productProducer" placeholder="productProducer">
+                <input type="text" class="form-control" name="productProducer" placeholder="productProducer" value="{{old('productProducer')}}">
             </div>
+            @if($errors->has('productProducer'))
+                <div class="error">{{ $errors->first('productProducer') }}</div>
+            @endif
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>product Description:</strong>
-                <textarea name="productDescription" class="form-control" id="productDescription" cols="30" rows="3"></textarea>
+                <textarea name="productDescription" class="form-control" id="productDescription" cols="30" rows="3">{{old('productDescription')}}</textarea>
             </div>
+            @if($errors->has('productDescription'))
+                <div class="error">{{ $errors->first('productDescription') }}</div>
+            @endif
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <br>

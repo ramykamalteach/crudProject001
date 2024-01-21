@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -40,10 +41,13 @@ class ProductController extends Controller
     {
         // validation
         $request->validate([
-            'productName' => 'required',
-            'productPrice' => 'required',
+            'productName' => 'required|unique:products',
+            'productPrice' => 'required | numeric | min:0 | not_in:0',
             'productProducer' => 'required',
             'productDescription' => 'required',
+        ],
+        [
+            'productName.required' => 'يجب إدخال أسم المنتج'
         ]);
 
         // add to database
@@ -88,8 +92,8 @@ class ProductController extends Controller
         //
         // validation
         $request->validate([
-            'productName' => 'required',
-            'productPrice' => 'required',
+            'productName' => 'required | unique:products,productName,'.$product->id,
+            'productPrice' => 'required | numeric | min:0 | not_in:0',
             'productProducer' => 'required',
             'productDescription' => 'required',
         ]);
