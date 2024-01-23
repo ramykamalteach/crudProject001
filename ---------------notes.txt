@@ -45,3 +45,7 @@ standard Laravel CRUD :
         - $fillable in model
         - controller (show, create, edit, update, delete) --> table field, uploaded file
 
+-----------------------------
+
+add new CRUD method
+
