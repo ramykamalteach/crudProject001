@@ -152,4 +152,26 @@ class ProductController extends Controller
 
         return redirect()->route("products.index")->with("success", "Product has been Deleted !!!");
     }
+
+    /* ----------------------------------------- */
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function isActive(Product $product)
+    {
+        //
+        if($product->isActive == 0) {
+            $product->isActive = 1;
+        }
+        else  {
+            $product->isActive = 0;
+        }
+        
+        $product->save();
+
+        return redirect()->route("products.index")->with("success", "Product change its Status !!!");
+    }
 }

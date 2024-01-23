@@ -22,6 +22,7 @@
         <table class="table table-bordered">
             <tr>
                 <th>No</th>
+                <th>Status</th>
                 <th>Name</th>
                 <th>Price</th>
                 <th width="280px">Action</th>
@@ -29,6 +30,17 @@
             @foreach ($products as $product)
             <tr>
                 <td>{{ ++$i }}</td>
+                <th>
+                    <form action="{{route('products.isActive', $product->id)}}" method="post">
+                        @csrf
+                        @method('POST')
+                        @if ($product->isActive  == 0)
+                            <button class="btn btn-secondary">Not Active</button>
+                        @else
+                        <button class="btn btn-warning">Active</button>
+                        @endif
+                    </form> 
+                </th>
                 <td>{{ $product->productName }}</td>
                 <td>{{ $product->productPrice }}</td>
                 <td>

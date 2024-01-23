@@ -9,3 +9,4 @@ Route::get('/', function () {
 });
 
 Route::resource("products", ProductController::class);
+Route::post("products/isActive/{product}", [ProductController::class, 'isActive'])->name('products.isActive');

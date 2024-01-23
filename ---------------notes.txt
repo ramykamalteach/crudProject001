@@ -48,4 +48,6 @@ standard Laravel CRUD :
 -----------------------------
 
 add new CRUD method
-
+        - add field isActive to table
+        - $fillable in model
+        - 
