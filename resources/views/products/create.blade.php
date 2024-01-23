@@ -24,7 +24,7 @@
     </div>
 @endif
    
-<form action="{{ route('products.store') }}" method="POST">
+<form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
   
      <div class="row">
@@ -64,6 +64,19 @@
                 <div class="error">{{ $errors->first('productDescription') }}</div>
             @endif
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>product photo:</strong>
+
+                <input type="file" name="photo" class="form-control" id="photo" value="{{old('photo')}}" onchange="photoPreviewFn(this);">
+            </div>
+
+            <img id="imagePreview" style="max-width:150px; max-height:150px;" src="" alt="photo preview">
+
+            @if($errors->has('photo'))
+                <div class="error">{{ $errors->first('photo') }}</div>
+            @endif
+        </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <br>
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -72,5 +85,17 @@
    
 </form>
 
+<script>
+    function photoPreviewFn(inputFile){
+        var file = inputFile.files[0];
+        if(file) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                document.getElementById("imagePreview").setAttribute("src", reader.result);
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
 
 @endsection

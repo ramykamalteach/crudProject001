@@ -45,13 +45,29 @@ class ProductController extends Controller
             'productPrice' => 'required | numeric | min:0 | not_in:0',
             'productProducer' => 'required',
             'productDescription' => 'required',
+            'photo' => 'required|mimes:jpg,jpeg,png,svg'
         ],
         [
             'productName.required' => 'يجب إدخال أسم المنتج'
         ]);
 
+        //
+        $photo = $request->file("photo");
+        $storedPhotoName = time() . $request->photo->getClientOriginalName();
+        $request->photo = $storedPhotoName;
+
+        $photo->move(public_path("productPhotos"), $storedPhotoName);
+
         // add to database
-        Product::create($request->all());
+        /* Product::create($request->all()); */
+        $product = new Product();
+        $product->productName = $request->productName;
+        $product->productPrice = $request->productPrice;
+        $product->productProducer = $request->productProducer;
+        $product->productDescription = $request->productDescription;
+        $product->photo = $storedPhotoName;
+
+        $product->save();
 
         return redirect()->route("products.index")->with("success", "Product has been Added !!!");
     }
@@ -96,10 +112,26 @@ class ProductController extends Controller
             'productPrice' => 'required | numeric | min:0 | not_in:0',
             'productProducer' => 'required',
             'productDescription' => 'required',
+            'photo' => 'mimes:jpg,jpeg,png,svg'
         ]);
 
+        if($request->photo != null) {  // form photo field is not empty
+            unlink(public_path("productPhotos")."/".$product->photo);
+
+            $photo = $request->file("photo");
+            $storedPhotoName = time() . $request->photo->getClientOriginalName();
+            /* $request->photo = $storedPhotoName; */
+            $product->photo = $storedPhotoName;
+            $photo->move(public_path("productPhotos"), $storedPhotoName);
+        }
+
         // add to database
-        $product->update($request->all());
+        $product->productName = $request->productName;
+        $product->productPrice = $request->productPrice;
+        $product->productProducer = $request->productProducer;
+        $product->productDescription = $request->productDescription;
+
+        $product->update();
 
         return redirect()->route("products.index")->with("success", "Product has been updated !!!");
     }
@@ -113,6 +145,9 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+
+        unlink(public_path("productPhotos")."/".$product->photo);
+
         $product->delete();
 
         return redirect()->route("products.index")->with("success", "Product has been Deleted !!!");

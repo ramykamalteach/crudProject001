@@ -39,4 +39,9 @@ standard Laravel CRUD :
 
     -----------------------------------------------------------------------
 
-    add photo
+    add photo :
+        - add photo field (varchar 255) has photo name + path
+        - form in view
+        - $fillable in model
+        - controller (show, create, edit, update, delete) --> table field, uploaded file
+
