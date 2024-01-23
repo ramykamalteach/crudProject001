@@ -35,3 +35,8 @@ standard Laravel CRUD :
     
 
     site.com/products/3
+
+
+    -----------------------------------------------------------------------
+
+    add photo
